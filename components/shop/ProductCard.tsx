@@ -15,7 +15,7 @@ type Props = {
 export function ProductCard({ product, index = 0 }: Props) {
   const { addItem } = useCart()
   const [added, setAdded] = useState(false)
-  const [imageLoaded, setImageLoaded] = useState(false)
+  const [hovered, setHovered] = useState(false)
   const isLarge = index === 0
 
   const handleAdd = (e: React.MouseEvent) => {
@@ -26,27 +26,39 @@ export function ProductCard({ product, index = 0 }: Props) {
     setTimeout(() => setAdded(false), 2200)
   }
 
+  const image1 = product.images[0]
+  const image2 = product.images[1] ?? product.images[0]
+
   return (
-    <Link href={`/product/${product.slug}`} className="group block">
+    <Link
+      href={`/product/${product.slug}`}
+      className="group block"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
       <div className={cn("relative bg-stone-100 overflow-hidden rounded-xl mb-4", isLarge ? "aspect-[3/4]" : "aspect-square")}>
         <Image
-          src={product.images[0]}
+          src={image1}
           alt={product.name}
           fill
           className={cn(
             "object-cover transition-all duration-700",
-            "group-hover:scale-[1.04]",
-            imageLoaded ? "opacity-100" : "opacity-0"
+            hovered ? "opacity-0 scale-[1.03]" : "opacity-100 scale-100"
           )}
           sizes={isLarge ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"}
-          onLoad={() => setImageLoaded(true)}
+        />
+        <Image
+          src={image2}
+          alt={`${product.name} alternate view`}
+          fill
+          className={cn(
+            "object-cover transition-all duration-700",
+            hovered ? "opacity-100 scale-100" : "opacity-0 scale-[1.03]"
+          )}
+          sizes={isLarge ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"}
         />
 
-        {!imageLoaded && (
-          <div className="absolute inset-0 bg-stone-200 animate-pulse" />
-        )}
-
-        <div className="absolute top-4 left-4 flex flex-col gap-1.5">
+        <div className="absolute top-4 left-4 flex flex-col gap-1.5 z-10">
           {product.badge && (
             <span className="bg-stone-900 text-stone-50 text-[10px] tracking-[0.22em] uppercase px-2.5 py-1 font-medium">
               {product.badge}
@@ -64,7 +76,7 @@ export function ProductCard({ product, index = 0 }: Props) {
           )}
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-400 ease-[cubic-bezier(0.16,1,0.3,1)]">
+        <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-10">
           <button
             onClick={handleAdd}
             className={cn(

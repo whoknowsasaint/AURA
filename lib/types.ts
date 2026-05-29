@@ -2,6 +2,7 @@ export type ProductColor = {
   name: string
   hex: string
   slug: string
+  imageIndex: number
 }
 
 export type ProductSpec = {
@@ -26,6 +27,7 @@ export type Product = {
   badge?: string
   new?: boolean
   bestseller?: boolean
+  video?: string
 }
 
 export type CartItem = {

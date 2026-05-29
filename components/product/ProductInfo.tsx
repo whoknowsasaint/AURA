@@ -1,18 +1,24 @@
 "use client"
 import { useState } from "react"
 import { useCart } from "@/components/layout/CartProvider"
-import type { Product } from "@/lib/types"
+import type { Product, ProductColor } from "@/lib/types"
 import { formatPrice, cn } from "@/lib/utils"
 import { ShoppingBag, Check } from "lucide-react"
 
 type Props = {
   product: Product
+  onColorChange?: (color: ProductColor) => void
 }
 
-export function ProductInfo({ product }: Props) {
+export function ProductInfo({ product, onColorChange }: Props) {
   const { addItem } = useCart()
   const [selectedColor, setSelectedColor] = useState(product.colors[0])
   const [added, setAdded] = useState(false)
+
+  const handleColorSelect = (color: ProductColor) => {
+    setSelectedColor(color)
+    onColorChange?.(color)
+  }
 
   const handleAdd = () => {
     addItem(product, selectedColor)
@@ -34,37 +40,26 @@ export function ProductInfo({ product }: Props) {
           </h1>
         </div>
         <div className="text-right flex-shrink-0 pt-1">
-          <span className="text-2xl font-light text-stone-900 block">
-            {formatPrice(product.price)}
-          </span>
+          <span className="text-2xl font-light text-stone-900 block">{formatPrice(product.price)}</span>
           {product.originalPrice && (
-            <span className="text-sm text-stone-400 line-through">
-              {formatPrice(product.originalPrice)}
-            </span>
+            <span className="text-sm text-stone-400 line-through">{formatPrice(product.originalPrice)}</span>
           )}
         </div>
       </div>
 
-      <p className="text-base font-light-italic text-stone-500 mb-6">
-        &ldquo;{product.tagline}&rdquo;
-      </p>
-
-      <p className="text-sm text-stone-500 leading-relaxed mb-10 max-w-[440px]">
-        {product.longDescription}
-      </p>
+      <p className="text-base font-light-italic text-stone-500 mb-6">&ldquo;{product.tagline}&rdquo;</p>
+      <p className="text-sm text-stone-500 leading-relaxed mb-10 max-w-[440px]">{product.longDescription}</p>
 
       <div className="mb-8">
         <div className="flex items-center justify-between mb-3">
-          <span className="text-[11px] tracking-[0.25em] uppercase text-stone-400 font-medium">
-            Colour
-          </span>
+          <span className="text-[11px] tracking-[0.25em] uppercase text-stone-400 font-medium">Colour</span>
           <span className="text-sm text-stone-600">{selectedColor.name}</span>
         </div>
         <div className="flex gap-3">
           {product.colors.map((color) => (
             <button
               key={color.slug}
-              onClick={() => setSelectedColor(color)}
+              onClick={() => handleColorSelect(color)}
               aria-label={color.name}
               className={cn(
                 "w-8 h-8 rounded-full transition-all duration-200 ring-offset-2 ring-offset-stone-50",
@@ -82,21 +77,13 @@ export function ProductInfo({ product }: Props) {
         onClick={handleAdd}
         className={cn(
           "w-full flex items-center justify-center gap-3 py-4 text-[13px] tracking-[0.15em] uppercase font-medium transition-all duration-300",
-          added
-            ? "bg-stone-700 text-stone-50"
-            : "bg-stone-900 text-stone-50 hover:bg-stone-800"
+          added ? "bg-stone-700 text-stone-50" : "bg-stone-900 text-stone-50 hover:bg-stone-800"
         )}
       >
         {added ? (
-          <>
-            <Check size={15} strokeWidth={2} />
-            Added to cart
-          </>
+          <><Check size={15} strokeWidth={2} /> Added to cart</>
         ) : (
-          <>
-            <ShoppingBag size={15} strokeWidth={1.5} />
-            Add to cart
-          </>
+          <><ShoppingBag size={15} strokeWidth={1.5} /> Add to cart</>
         )}
       </button>
 

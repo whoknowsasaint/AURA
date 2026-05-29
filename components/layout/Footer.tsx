@@ -14,15 +14,15 @@ export function Footer() {
           {[
             {
               heading: "Products",
-              links: [["Over-Ear", "/shop"], ["In-Ear", "/shop"], ["Earbuds", "/shop"], ["Accessories", "/shop"]],
+              links: [["Over-Ear", "/shop"], ["In-Ear", "/shop"], ["Earbuds", "/shop"], ["Craftsmanship", "/craftsmanship"]],
             },
             {
               heading: "Company",
-              links: [["About", "/about"], ["Craftsmanship", "/about"], ["Careers", "/about"], ["Press", "/about"]],
+              links: [["About", "/about"], ["Craftsmanship", "/craftsmanship"], ["Careers", "/careers"], ["Press", "/press"]],
             },
             {
               heading: "Support",
-              links: [["FAQ", "/"], ["Warranty", "/"], ["Returns", "/"], ["Contact", "/"]],
+              links: [["FAQ", "/faq"], ["Warranty", "/warranty"], ["Returns", "/returns"], ["Contact", "/contact"]],
             },
           ].map((col) => (
             <div key={col.heading}>
@@ -47,8 +47,8 @@ export function Footer() {
             &copy; {new Date().getFullYear()} AURA Audio. All rights reserved.
           </p>
           <div className="flex gap-6">
-            {["Privacy", "Terms", "Cookies"].map((l) => (
-              <Link key={l} href="/" className="text-xs text-stone-400 hover:text-stone-700 transition-colors duration-200">
+            {[["Privacy", "/privacy"], ["Terms", "/terms"], ["Cookies", "/cookies"]].map(([l, href]) => (
+              <Link key={l} href={href} className="text-xs text-stone-400 hover:text-stone-700 transition-colors duration-200">
                 {l}
               </Link>
             ))}

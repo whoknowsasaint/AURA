@@ -1,18 +1,33 @@
 "use client"
-import { useRef, useState } from "react"
+import { useRef, useState, useEffect } from "react"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
+import type { ProductColor } from "@/lib/types"
 
 type Props = {
   images: string[]
   name: string
+  selectedColor?: ProductColor
 }
 
-export function ProductTilt({ images, name }: Props) {
+export function ProductTilt({ images, name, selectedColor }: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [tilt, setTilt] = useState({ x: 0, y: 0 })
   const [hovering, setHovering] = useState(false)
   const [activeIndex, setActiveIndex] = useState(0)
+  const [transitioning, setTransitioning] = useState(false)
+
+  useEffect(() => {
+    if (selectedColor === undefined) return
+    const newIndex = selectedColor.imageIndex ?? 0
+    if (newIndex === activeIndex) return
+    setTransitioning(true)
+    const t = setTimeout(() => {
+      setActiveIndex(newIndex)
+      setTransitioning(false)
+    }, 220)
+    return () => clearTimeout(t)
+  }, [selectedColor])
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect()
@@ -22,6 +37,8 @@ export function ProductTilt({ images, name }: Props) {
     const dy = (e.clientY - cy) / (rect.height / 2)
     setTilt({ x: dy * -8, y: dx * 8 })
   }
+
+  const safeIndex = Math.min(activeIndex, images.length - 1)
 
   return (
     <div className="flex flex-col gap-4">
@@ -33,28 +50,33 @@ export function ProductTilt({ images, name }: Props) {
         onMouseLeave={() => { setTilt({ x: 0, y: 0 }); setHovering(false) }}
         style={{
           transform: hovering
-            ? `perspective(1200px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale3d(1.015, 1.015, 1.015)`
+            ? `perspective(1200px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale3d(1.015,1.015,1.015)`
             : "perspective(1200px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)",
-          transition: hovering ? "transform 0.08s ease-out" : "transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
+          transition: hovering ? "transform 0.08s ease-out" : "transform 0.7s cubic-bezier(0.16,1,0.3,1)",
           willChange: "transform",
         }}
       >
-        <Image
-          src={images[activeIndex]}
-          alt={name}
-          fill
-          priority
-          className="object-cover transition-opacity duration-300"
-          sizes="(max-width: 768px) 100vw, 55vw"
-        />
+        {images.map((src, i) => (
+          <Image
+            key={src}
+            src={src}
+            alt={`${name} ${i === 0 ? "" : `view ${i + 1}`}`}
+            fill
+            priority={i === 0}
+            className={cn(
+              "object-cover absolute inset-0 transition-opacity duration-400",
+              i === safeIndex && !transitioning ? "opacity-100" : "opacity-0"
+            )}
+            sizes="(max-width: 768px) 100vw, 55vw"
+          />
+        ))}
 
         <div
-          className="absolute inset-0 pointer-events-none"
+          className="absolute inset-0 pointer-events-none transition-all duration-100"
           style={{
             background: hovering
               ? `radial-gradient(circle at ${50 + tilt.y * 3}% ${50 + tilt.x * 3}%, rgba(255,255,255,0.12) 0%, transparent 60%)`
               : "none",
-            transition: "background 0.1s ease-out",
           }}
         />
       </div>
@@ -71,13 +93,7 @@ export function ProductTilt({ images, name }: Props) {
               )}
               aria-label={`View image ${i + 1}`}
             >
-              <Image
-                src={img}
-                alt={`${name} view ${i + 1}`}
-                fill
-                className="object-cover"
-                sizes="80px"
-              />
+              <Image src={img} alt={`${name} view ${i + 1}`} fill className="object-cover" sizes="80px" />
             </button>
           ))}
         </div>

@@ -13,15 +13,16 @@ export const products: Product[] = [
     category: "over-ear",
     badge: "Flagship",
     bestseller: true,
+    video: "https://player.vimeo.com/external/434045526.hd.mp4?s=ef5edac5d8c8f16e1853c3e5a5e9e5e9e5e9e5e9&profile_id=174",
     colors: [
-      { name: "Lunar White", hex: "#f0ede8", slug: "lunar-white" },
-      { name: "Obsidian", hex: "#1c1917", slug: "obsidian" },
-      { name: "Sand", hex: "#c4b49a", slug: "sand" },
+      { name: "Lunar White", hex: "#f0ede8", slug: "lunar-white", imageIndex: 1 },
+      { name: "Obsidian", hex: "#1c1917", slug: "obsidian", imageIndex: 0 },
+      { name: "Sand", hex: "#c4b49a", slug: "sand", imageIndex: 2 },
     ],
     images: [
-      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=90",
-      "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=800&q=90",
-      "https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=800&q=90",
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=1200&q=90",
+      "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=1200&q=90",
+      "https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=1200&q=90",
     ],
     specs: [
       { label: "Driver size", value: "40mm custom planar" },
@@ -53,13 +54,13 @@ export const products: Product[] = [
     badge: "Studio",
     new: true,
     colors: [
-      { name: "Brushed Silver", hex: "#d4d0cc", slug: "brushed-silver" },
-      { name: "Midnight", hex: "#2d2b2a", slug: "midnight" },
+      { name: "Brushed Silver", hex: "#d4d0cc", slug: "brushed-silver", imageIndex: 0 },
+      { name: "Midnight", hex: "#2d2b2a", slug: "midnight", imageIndex: 1 },
     ],
     images: [
-      "https://images.unsplash.com/photo-1572536147248-ac59a8abfa4b?w=800&q=90",
-      "https://images.unsplash.com/photo-1545454675-3531b543be5d?w=800&q=90",
-      "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=800&q=90",
+      "https://images.unsplash.com/photo-1572536147248-ac59a8abfa4b?w=1200&q=90",
+      "https://images.unsplash.com/photo-1545454675-3531b543be5d?w=1200&q=90",
+      "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=1200&q=90",
     ],
     specs: [
       { label: "Driver type", value: "Planar magnetic" },
@@ -89,14 +90,14 @@ export const products: Product[] = [
     category: "earbuds",
     bestseller: true,
     colors: [
-      { name: "Chalk", hex: "#ede9e3", slug: "chalk" },
-      { name: "Slate", hex: "#4a4845", slug: "slate" },
-      { name: "Sage", hex: "#8a9e8c", slug: "sage" },
+      { name: "Chalk", hex: "#ede9e3", slug: "chalk", imageIndex: 0 },
+      { name: "Slate", hex: "#4a4845", slug: "slate", imageIndex: 1 },
+      { name: "Sage", hex: "#8a9e8c", slug: "sage", imageIndex: 2 },
     ],
     images: [
-      "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=800&q=90",
-      "https://images.unsplash.com/photo-1601524909162-ae8725290836?w=800&q=90",
-      "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=800&q=90",
+      "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=1200&q=90",
+      "https://images.unsplash.com/photo-1601524909162-ae8725290836?w=1200&q=90",
+      "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=1200&q=90",
     ],
     specs: [
       { label: "Driver size", value: "11mm custom dynamic" },
@@ -126,13 +127,13 @@ export const products: Product[] = [
     category: "in-ear",
     new: true,
     colors: [
-      { name: "Titanium", hex: "#b5b2ae", slug: "titanium" },
-      { name: "Carbon", hex: "#2a2827", slug: "carbon" },
+      { name: "Titanium", hex: "#b5b2ae", slug: "titanium", imageIndex: 0 },
+      { name: "Carbon", hex: "#2a2827", slug: "carbon", imageIndex: 1 },
     ],
     images: [
-      "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=800&q=90",
-      "https://images.unsplash.com/photo-1564424224827-cd24b8915874?w=800&q=90",
-      "https://images.unsplash.com/photo-1610438235354-a6ae5528385c?w=800&q=90",
+      "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=1200&q=90",
+      "https://images.unsplash.com/photo-1564424224827-cd24b8915874?w=1200&q=90",
+      "https://images.unsplash.com/photo-1610438235354-a6ae5528385c?w=1200&q=90",
     ],
     specs: [
       { label: "Transducer", value: "Bone conduction" },
@@ -145,7 +146,7 @@ export const products: Product[] = [
     features: [
       "Open-ear design, zero fatigue",
       "Titanium headband",
-      "IP67 — swim-proof",
+      "IP67 -- swim-proof",
       "Multipoint 2-device pairing",
       "4-mic call clarity",
     ],
@@ -157,18 +158,18 @@ export const products: Product[] = [
     tagline: "Pure signal. Zero compromise.",
     description: "Reference-class IEM for the serious listener.",
     longDescription:
-      "AURA Void is built for people who read frequency response graphs for pleasure. Each unit is measured and matched by hand. The hybrid driver configuration — 1 dynamic, 2 balanced armature, 1 planar tweeter — is tuned to a target curve developed with three Grammy-winning mastering engineers.",
+      "AURA Void is built for people who read frequency response graphs for pleasure. Each unit is measured and matched by hand. The hybrid driver configuration is tuned to a target curve developed with three Grammy-winning mastering engineers.",
     price: 899,
     category: "in-ear",
     badge: "Reference",
     colors: [
-      { name: "Copper", hex: "#c47d3c", slug: "copper" },
-      { name: "Clear", hex: "#e8e4df", slug: "clear" },
+      { name: "Copper", hex: "#c47d3c", slug: "copper", imageIndex: 0 },
+      { name: "Clear", hex: "#e8e4df", slug: "clear", imageIndex: 1 },
     ],
     images: [
-      "https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=800&q=90",
-      "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800&q=90",
-      "https://images.unsplash.com/photo-1578311350284-ec2e74d8d7a0?w=800&q=90",
+      "https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=1200&q=90",
+      "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=1200&q=90",
+      "https://images.unsplash.com/photo-1578311350284-ec2e74d8d7a0?w=1200&q=90",
     ],
     specs: [
       { label: "Driver config", value: "1DD + 2BA + 1 planar" },
@@ -193,19 +194,19 @@ export const products: Product[] = [
     tagline: "Everyday excellence.",
     description: "The everyday over-ear for those who will not settle.",
     longDescription:
-      "Not everyone needs a flagship. AURA Form delivers 90% of AURA One at a price that does not require a second thought. 30-hour battery, two-mic ANC, and a folding design that disappears into a bag. It is the headphone most people will reach for every single day.",
+      "Not everyone needs a flagship. AURA Form delivers 90% of AURA One at a price that does not require a second thought. 30-hour battery, two-mic ANC, and a folding design that disappears into a bag.",
     price: 279,
     category: "over-ear",
     bestseller: true,
     colors: [
-      { name: "Stone", hex: "#c8c2bb", slug: "stone" },
-      { name: "Ink", hex: "#1c1917", slug: "ink" },
-      { name: "Dusk", hex: "#8b7e6e", slug: "dusk" },
+      { name: "Stone", hex: "#c8c2bb", slug: "stone", imageIndex: 0 },
+      { name: "Ink", hex: "#1c1917", slug: "ink", imageIndex: 1 },
+      { name: "Dusk", hex: "#8b7e6e", slug: "dusk", imageIndex: 2 },
     ],
     images: [
-      "https://images.unsplash.com/photo-1487215078519-e21cc028cb29?w=800&q=90",
-      "https://images.unsplash.com/photo-1528148343865-51218c4a13e6?w=800&q=90",
-      "https://images.unsplash.com/photo-1578319439584-104c94d37305?w=800&q=90",
+      "https://images.unsplash.com/photo-1487215078519-e21cc028cb29?w=1200&q=90",
+      "https://images.unsplash.com/photo-1528148343865-51218c4a13e6?w=1200&q=90",
+      "https://images.unsplash.com/photo-1578319439584-104c94d37305?w=1200&q=90",
     ],
     specs: [
       { label: "Driver size", value: "40mm dynamic" },
@@ -229,6 +230,8 @@ export const getProductBySlug = (slug: string) =>
   products.find((p) => p.slug === slug) ?? null
 
 export const getRelatedProducts = (current: Product, count = 3) =>
-  products.filter((p) => p.id !== current.id && p.category === current.category).slice(0, count).concat(
-    products.filter((p) => p.id !== current.id && p.category !== current.category)
-  ).slice(0, count)
+  products
+    .filter((p) => p.id !== current.id && p.category === current.category)
+    .slice(0, count)
+    .concat(products.filter((p) => p.id !== current.id && p.category !== current.category))
+    .slice(0, count)
