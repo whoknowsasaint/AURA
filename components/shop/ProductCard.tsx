@@ -10,10 +10,9 @@ import { StarRating } from "@/components/ui/StarRating"
 
 type Props = {
   product: Product
-  index?: number
 }
 
-export function ProductCard({ product, index = 0 }: Props) {
+export function ProductCard({ product }: Props) {
   const { addItem } = useCart()
   const [added, setAdded] = useState(false)
   const [hovered, setHovered] = useState(false)

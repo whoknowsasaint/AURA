@@ -8,7 +8,7 @@ export function CustomCursor() {
   const dot = useRef<HTMLDivElement>(null)
   const ring = useRef<HTMLDivElement>(null)
   const label = useRef<HTMLSpanElement>(null)
-  const [state, setState] = useState<CursorState>("default")
+  const [, setState] = useState<CursorState>("default")
 
   useEffect(() => {
     const ctx = gsap.context(() => {

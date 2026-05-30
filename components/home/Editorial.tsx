@@ -28,7 +28,7 @@ const sections = [
 export function Editorial() {
   return (
     <section className="bg-stone-50">
-      {sections.map((s, idx) => (
+      {sections.map((s) => (
         <div key={s.label} className="max-w-[1440px] mx-auto px-6 md:px-12 py-20 md:py-28">
           <div className={`grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center ${s.reverse ? "md:[&>*:first-child]:order-2" : ""}`}>
             <ParallaxImage className="aspect-[4/3] bg-stone-100 overflow-hidden rounded-2xl" speed={12}>

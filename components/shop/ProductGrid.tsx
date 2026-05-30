@@ -1,5 +1,4 @@
 "use client"
-import { useMemo } from "react"
 import { ProductCard } from "./ProductCard"
 import { RevealOnScroll } from "@/components/motion/RevealOnScroll"
 import type { Product } from "@/lib/types"
@@ -22,7 +21,7 @@ export function ProductGrid({ products }: Props) {
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12 py-10">
       {products.map((product, i) => (
         <RevealOnScroll key={product.id} delay={Math.min(i * 0.06, 0.3)}>
-          <ProductCard product={product} index={i} />
+          <ProductCard product={product} />
         </RevealOnScroll>
       ))}
     </div>

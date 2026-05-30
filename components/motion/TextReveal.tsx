@@ -14,7 +14,7 @@ type Props = {
   as?: keyof JSX.IntrinsicElements
 }
 
-export function TextReveal({ children, className, delay = 0, stagger = 0.08, as: Tag = "div" }: Props) {
+export function TextReveal({ children, className, delay = 0, stagger = 0.08 }: Props) {
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {

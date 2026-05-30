@@ -27,7 +27,8 @@ export function ProductTilt({ images, name, selectedColor }: Props) {
       setTransitioning(false)
     }, 220)
     return () => clearTimeout(t)
-  }, [selectedColor])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedColor]) // activeIndex intentionally omitted to avoid reset loop
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect()

@@ -32,7 +32,7 @@ export default function SignupPage() {
   const [loading, setLoading] = useState(false)
   const [done, setDone] = useState(false)
   const [slideIndex, setSlideIndex] = useState(0)
-  const [prevIndex, setPrevIndex] = useState<number | null>(null)
+  const [, setPrevIndex] = useState<number | null>(null)
 
   useEffect(() => {
     const interval = setInterval(() => {
