@@ -18,6 +18,7 @@ const categories = [
 
 const sortOptions = [
   { label: "Featured", value: "featured" },
+  { label: "Top rated", value: "rating" },
   { label: "Price: low to high", value: "price-asc" },
   { label: "Price: high to low", value: "price-desc" },
   { label: "Newest", value: "newest" },

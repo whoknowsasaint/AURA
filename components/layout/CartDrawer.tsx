@@ -4,6 +4,7 @@ import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import { X, Plus, Minus } from "lucide-react"
 import { useCart } from "./CartProvider"
+import Link from "next/link"
 import { formatPrice } from "@/lib/utils"
 
 export function CartDrawer() {
@@ -102,9 +103,13 @@ export function CartDrawer() {
                   <span className="text-sm font-medium">{formatPrice(total)}</span>
                 </div>
                 <p className="text-xs text-stone-400">Shipping calculated at checkout.</p>
-                <button className="w-full bg-stone-900 text-stone-50 py-4 text-[13px] tracking-[0.15em] uppercase font-medium hover:bg-stone-800 transition-colors duration-200">
-                  Checkout
-                </button>
+                <Link
+                href="/checkout"
+                onClick={closeCart}
+                className="w-full block text-center bg-stone-900 text-stone-50 py-4 text-[13px] tracking-[0.15em] uppercase font-medium hover:bg-stone-800 transition-colors duration-200"
+                >
+                Checkout
+                </Link>
               </div>
             )}
           </motion.aside>

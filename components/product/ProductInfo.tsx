@@ -4,6 +4,7 @@ import { useCart } from "@/components/layout/CartProvider"
 import type { Product, ProductColor } from "@/lib/types"
 import { formatPrice, cn } from "@/lib/utils"
 import { ShoppingBag, Check } from "lucide-react"
+import { StarRating } from "../ui/StarRating"
 
 type Props = {
   product: Product
@@ -38,6 +39,7 @@ export function ProductInfo({ product, onColorChange }: Props) {
           <h1 className="text-[clamp(2.2rem,5vw,3.5rem)] font-light leading-[1.05] tracking-tight text-stone-900">
             {product.name}
           </h1>
+          <StarRating rating={product.rating} reviewCount={product.reviewCount} size="md" className="mt-3 mb-1" />
         </div>
         <div className="text-right flex-shrink-0 pt-1">
           <span className="text-2xl font-light text-stone-900 block">{formatPrice(product.price)}</span>

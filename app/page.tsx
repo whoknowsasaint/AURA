@@ -3,6 +3,7 @@ import { Marquee } from "@/components/home/Marquee"
 import { FeaturedProduct } from "@/components/home/FeaturedProduct"
 import { Editorial } from "@/components/home/Editorial"
 import { VideoSection } from "@/components/home/VideoSection"
+import { HorizontalScroll } from "@/components/motion/HorizontalScroll"
 import { Testimonials } from "@/components/home/Testimonials"
 
 export default function HomePage() {
@@ -13,6 +14,7 @@ export default function HomePage() {
       <FeaturedProduct />
       <Editorial />
       <VideoSection />
+      <HorizontalScroll />
       <Testimonials />
     </>
   )

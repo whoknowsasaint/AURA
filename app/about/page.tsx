@@ -37,9 +37,9 @@ export default function AboutPage() {
 
       <section className="relative h-[65vh] md:h-[75vh] overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1520333789090-1afc82db536a?w=1800&q=90"
-          alt="Person wearing AURA headphones in a quiet space"
-          className="w-full h-full object-cover object-top"
+          src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=1800&q=90"
+          alt="AURA studio and craftsmanship"
+          className="w-full h-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-stone-50/60" />
       </section>

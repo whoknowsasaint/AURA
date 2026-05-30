@@ -6,6 +6,7 @@ import { useCart } from "@/components/layout/CartProvider"
 import type { Product } from "@/lib/types"
 import { formatPrice, cn } from "@/lib/utils"
 import { ShoppingBag, Check } from "lucide-react"
+import { StarRating } from "@/components/ui/StarRating"
 
 type Props = {
   product: Product
@@ -16,7 +17,6 @@ export function ProductCard({ product, index = 0 }: Props) {
   const { addItem } = useCart()
   const [added, setAdded] = useState(false)
   const [hovered, setHovered] = useState(false)
-  const isLarge = index === 0
 
   const handleAdd = (e: React.MouseEvent) => {
     e.preventDefault()
@@ -36,26 +36,20 @@ export function ProductCard({ product, index = 0 }: Props) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <div className={cn("relative bg-stone-100 overflow-hidden rounded-xl mb-4", isLarge ? "aspect-[3/4]" : "aspect-square")}>
+      <div className="relative bg-stone-100 overflow-hidden rounded-xl mb-4 aspect-square">
         <Image
           src={image1}
           alt={product.name}
           fill
-          className={cn(
-            "object-cover transition-all duration-700",
-            hovered ? "opacity-0 scale-[1.03]" : "opacity-100 scale-100"
-          )}
-          sizes={isLarge ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"}
+          className={cn("object-cover transition-all duration-700", hovered ? "opacity-0 scale-[1.03]" : "opacity-100 scale-100")}
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
         <Image
           src={image2}
           alt={`${product.name} alternate view`}
           fill
-          className={cn(
-            "object-cover transition-all duration-700",
-            hovered ? "opacity-100 scale-100" : "opacity-0 scale-[1.03]"
-          )}
-          sizes={isLarge ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"}
+          className={cn("object-cover transition-all duration-700", hovered ? "opacity-100 scale-100" : "opacity-0 scale-[1.03]")}
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
 
         <div className="absolute top-4 left-4 flex flex-col gap-1.5 z-10">
@@ -81,16 +75,10 @@ export function ProductCard({ product, index = 0 }: Props) {
             onClick={handleAdd}
             className={cn(
               "w-full flex items-center justify-center gap-2 py-3 text-[12px] tracking-[0.15em] uppercase font-medium transition-all duration-200 backdrop-blur-sm",
-              added
-                ? "bg-stone-700/95 text-stone-50"
-                : "bg-stone-900/95 text-stone-50 hover:bg-stone-900"
+              added ? "bg-stone-700/95 text-stone-50" : "bg-stone-900/95 text-stone-50 hover:bg-stone-900"
             )}
           >
-            {added ? (
-              <><Check size={13} strokeWidth={2} /> Added</>
-            ) : (
-              <><ShoppingBag size={13} strokeWidth={1.5} /> Add to cart</>
-            )}
+            {added ? <><Check size={13} strokeWidth={2} /> Added</> : <><ShoppingBag size={13} strokeWidth={1.5} /> Add to cart</>}
           </button>
         </div>
       </div>
@@ -103,6 +91,7 @@ export function ProductCard({ product, index = 0 }: Props) {
           <p className="text-xs text-stone-400 mt-0.5 capitalize">
             {product.category.replace("-", " ")}
           </p>
+          <StarRating rating={product.rating} reviewCount={product.reviewCount} size="sm" className="mt-1.5" />
         </div>
         <div className="flex-shrink-0 text-right">
           <p className="text-sm text-stone-700">{formatPrice(product.price)}</p>

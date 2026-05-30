@@ -10,6 +10,18 @@ export type ProductSpec = {
   value: string
 }
 
+export type Review = {
+  id: string
+  author: string
+  location: string
+  rating: number
+  title: string
+  body: string
+  date: string
+  product: string
+  verified: boolean
+}
+
 export type Product = {
   id: string
   slug: string
@@ -28,6 +40,8 @@ export type Product = {
   new?: boolean
   bestseller?: boolean
   video?: string
+  rating: number
+  reviewCount: number
 }
 
 export type CartItem = {
