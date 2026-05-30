@@ -16,6 +16,9 @@ import { NavigationProgress } from "@/components/motion/NavigationProgress"
 export const metadata: Metadata = {
   title: { default: "AURA Audio", template: "%s | AURA Audio" },
   description: "Premium wireless headphones engineered for those who hear the difference.",
+  icons:{
+    icon: '/favicon.png',
+  },
   keywords: ["headphones", "premium audio", "wireless", "AURA"],
   metadataBase: new URL("https://aura-audio.vercel.app"),
   openGraph: {

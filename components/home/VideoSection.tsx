@@ -64,12 +64,12 @@ export function VideoSection() {
         <source src="/videos/lifestyle.mp4" type="video/mp4" />
       </video>
 
-      <img
+     {/* <img
         //src="https://images.unsplash.com/photo-1520333789090-1afc82db536a?w=1800&q=85"
         alt="Person wearing AURA headphones"
         className="absolute inset-0 w-full h-full object-cover object-top opacity-55"
         style={{ zIndex: 0 }}
-      />
+      /> */}
 
       <div className="absolute inset-0 bg-gradient-to-b from-stone-900/10 via-transparent to-stone-900/70" style={{ zIndex: 1 }} />
 
